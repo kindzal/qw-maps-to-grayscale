@@ -12,10 +12,10 @@ it won't find an respective map directory in the QW textures directory it will:
 If you want the script to recreate all map textures in grayscale make sure to delete all map dirs from qw\textures first
 
 ## Prerequisites
-- <a href="https://git-scm.com/download/win" rel="nofollow">Git for Windows</a> (optional - you can just download the script from <a href="https://github.com/kindzal/qw-maps-to-grayscale/blob/master/convert.bat" rel="nofollow">here</a>)
 - <a href="https://www.irfanview.com/64bit.htm" rel="nofollow">IrfanView 64-bit</a>
 - <a href="https://joshua.itch.io/quake-tools?download" rel="nofollow">BSP to WAD</a>
 - <a href="https://www.quaddicted.com/files/tools/qpakman-062b.zip" rel="nofollow">QPakMan</a>
+- <a href="https://git-scm.com/download/win" rel="nofollow">Git for Windows</a> (optional - you can just download the script from <a href="https://github.com/kindzal/qw-maps-to-grayscale/archive/master.zip" rel="nofollow">here</a>)
 
 convert.bat script will expect the following executables to be in the script directory: bsp2wad.exe, qpakman.exe, i_view64.exe
 

@@ -23,6 +23,10 @@ convert.bat script will expect the following executables to be in the script dir
 To download the script, simply open cmd or PowerShell prompt: <br/><br/>
 `git clone https://github.com/kindzal/qw-maps-to-grayscale.git qw-maps-to-grayscale`
 
+or just download it from here:
+
+<a href="https://github.com/kindzal/qw-maps-to-grayscale/archive/master.zip" rel="nofollow">https://github.com/kindzal/qw-maps-to-grayscale/archive/master.zip</a>
+
 ## Example usage
 `convert.bat C:\games\quake\qw\maps C:\games\quake\qw\textures`
 

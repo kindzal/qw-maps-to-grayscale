@@ -20,12 +20,12 @@ If you want the script to recreate all map textures in grayscale make sure to de
 convert.bat script will expect the following executables to be in the script directory: bsp2wad.exe, qpakman.exe, i_view64.exe
 
 ## Downloading
-To download the script, simply open a terminal or PowerShell prompt (depending on your OS): <br/>
+To download the script, simply open cmd or PowerShell prompt: <br/><br/>
 `git clone https://github.com/kindzal/qw-maps-to-grayscale.git qw-maps-to-grayscale`
 
-##Example usage
+## Example usage
 convert.bat C:\games\quake\qw\maps C:\games\quake\qw\textures
 
-##Notes
+## Notes
 This script will not convert sky textures as it can't be done automatically in a reliable manner. You'll need to do it manually if wanted. 
-This script will not convert the orignal DM maps / SP maps from the .pak file. Get this downloaded seperately.
+This script will not convert the orignal DM maps / SP maps from the .pak file. Get this downloaded seperately from <a href="https://www.quakeworld.nu/forum/topic/2042/37310/greyish-textures-pack-clean-simple/" rel="nofollow">here</a> or <a href="https://gfx.quakeworld.nu/browse/textures/" rel="nofollow">here</a>

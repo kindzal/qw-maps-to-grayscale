@@ -24,7 +24,7 @@ To download the script, simply open cmd or PowerShell prompt: <br/><br/>
 `git clone https://github.com/kindzal/qw-maps-to-grayscale.git qw-maps-to-grayscale`
 
 ## Example usage
-convert.bat C:\games\quake\qw\maps C:\games\quake\qw\textures
+`convert.bat C:\games\quake\qw\maps C:\games\quake\qw\textures`
 
 ## Notes
 This script will not convert sky textures as it can't be done automatically in a reliable manner. You'll need to do it manually if wanted. 

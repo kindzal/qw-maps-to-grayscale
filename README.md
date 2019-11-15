@@ -6,7 +6,7 @@ it won't find an respective map directory in the QW textures directory it will:
 - create a temp dir in the script folder
 - covert bsp to wad using bsp2wad.exe
 - extract all textures from the converted wad file to a temp dir using qpakman.exe
-- convert extracted textures to grayscale and put them in qw\textures{MAP} directory using i_view64.exe
+- convert extracted textures to grayscale and put them in qw\textures\{MAP} directory using i_view64.exe
 - remove all files in the temp dir and the temp dir itself from the current folder
 
 If you want the script to recreate all map textures in grayscale make sure to delete all map dirs from qw\textures first

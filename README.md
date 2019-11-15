@@ -9,7 +9,7 @@ it won't find an respective map directory in the QW textures directory it will:
 - convert extracted textures to grayscale and put them in qw\textures\\{MAP} directory using i_view64.exe
 - remove all files in the temp dir and the temp dir itself from the current folder
 
-If you want the script to recreate all map textures in grayscale make sure to delete all map dirs from qw\textures first
+If you want the script to recreate all map textures in grayscale make sure to delete all map dirs from qw\textures first.
 
 ## Prerequisites
 - <a href="https://www.irfanview.com/64bit.htm" rel="nofollow">IrfanView 64-bit</a>
@@ -17,7 +17,7 @@ If you want the script to recreate all map textures in grayscale make sure to de
 - <a href="https://www.quaddicted.com/files/tools/qpakman-062b.zip" rel="nofollow">QPakMan</a>
 - <a href="https://git-scm.com/download/win" rel="nofollow">Git for Windows</a> (optional - you can just download the script from <a href="https://github.com/kindzal/qw-maps-to-grayscale/archive/master.zip" rel="nofollow">here</a>)
 
-convert.bat script will expect the following executables to be in the script directory: bsp2wad.exe, qpakman.exe, i_view64.exe
+convert.bat script will expect the following executables to be in the script directory: bsp2wad.exe, qpakman.exe, i_view64.exe.
 
 ## Downloading
 To download the script, simply open cmd or PowerShell prompt: <br/><br/>
@@ -31,5 +31,5 @@ or just download it from here:
 `convert.bat C:\games\quake\qw\maps C:\games\quake\qw\textures`
 
 ## Notes
-This script will not convert sky textures as it can't be done automatically in a reliable manner. You'll need to do it manually if wanted. 
-This script will not convert the orignal DM maps / SP maps from the .pak file. Get this downloaded seperately from <a href="https://www.quakeworld.nu/forum/topic/2042/37310/greyish-textures-pack-clean-simple/" rel="nofollow">here</a> or <a href="https://gfx.quakeworld.nu/browse/textures/" rel="nofollow">here</a>
+This script will not convert sky textures as it can't be done automatically in a reliable manner. You'll need to do it manually if wanted. <br/>
+This script will not convert the orignal DM maps / SP maps from the .pak file. Get this downloaded seperately from <a href="https://www.quakeworld.nu/forum/topic/2042/37310/greyish-textures-pack-clean-simple/" rel="nofollow">here</a> or <a href="https://gfx.quakeworld.nu/browse/textures/" rel="nofollow">here</a>.

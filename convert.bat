@@ -9,7 +9,6 @@ SET "Pattern2=star_"
 SET "Replace2=#"
 SET script_dir=%CD%
 
-
 IF "%~1"=="/h" (
     ECHO Example usage %0 QW_MAPS_DIR_PATH QW_TEXTURES_DIR_PATH
     EXIT 0
@@ -70,13 +69,18 @@ FOR %%a IN (%qw_maps_dir%\*.bsp) DO (
 
         CD /d %qw_texture_dir%\%%~na
 
-        REM workaround for qpakman full bright textures "feature" and "*" / "_star" character in texture names
+        REM workaround for qpakman full bright textures "feature"
         FOR %%b IN (%qw_texture_dir%\%%~na\*.png) DO (
             SET "File=%%~nxb"
             REN "%%b" "!File:%Pattern1%=%Replace1%!"
-            REN "%%b" "!File:%Pattern2%=%Replace2%!"
         )
-        
+
+        REM fix for "*" / "_star" character in texture names
+        FOR %%c IN (%qw_texture_dir%\%%~na\*.png) DO (
+            SET "File=%%~nxc"
+            REN "%%c" "!File:%Pattern2%=%Replace2%!"
+        )
+
         CD /d %script_dir%
     )
 )

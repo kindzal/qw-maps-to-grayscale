@@ -3,8 +3,11 @@ setlocal enabledelayedexpansion
 
 SET qw_maps_dir=C:\games\quake\qw\maps
 SET qw_texture_dir=C:\games\quake\qw\textures
-SET "Pattern=_fbr"
-SET "Replace="
+SET "Pattern1=_fbr"
+SET "Replace1="
+SET "Pattern2=star_"
+SET "Replace2=#"
+
 
 IF "%~1"=="/h" (
     ECHO Example usage %0 QW_MAPS_DIR_PATH QW_TEXTURES_DIR_PATH
@@ -50,16 +53,19 @@ FOR %%a IN (%qw_maps_dir%\*.bsp) DO (
         REM extract textures from wad
         ..\qpakman -g quake1 %qw_texture_dir%\%%~na\out.wad -e
 
-        REM workaround for qpakman full bright textures "feature"
-        FOR %%# IN (%CD%\temp\*.*) DO (
-            SET "File=%%~nx#"
-            REN "%%#" "!File:%Pattern%=%Replace%!"
+        REM workaround for qpakman full bright textures "feature" and "*" / "_star" character in texture names
+        FOR %%a IN (%CD%\temp\*.*) DO (
+            SET "File=%%~nxa"
+            REN "%%a" "!File:%Pattern1%=%Replace1%!"
+            REN "%%a" "!File:%Pattern2%=%Replace2%!"
         )
 
         CD /d ".."  
 
-        REM delete sky textures
+        REM delete sky, trigger and clip textures
         DEL "%CD%\temp\sky*.*" /F /Q
+		DEL "%CD%\temp\trigger.*" /F /Q
+		DEL "%CD%\temp\clip.*" /F /Q
 
         REM convert textures to grayscale
         i_view64.exe "%CD%\temp\*.*" /advancedbatch /gray /convert="%qw_texture_dir%\%%~na\*.png"

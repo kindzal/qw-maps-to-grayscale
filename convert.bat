@@ -36,37 +36,37 @@ IF NOT EXIST %CD%\temp (
     EXIT 3
 )
 
-FOR %%a IN (%qw_maps_dir%\*.bsp) DO (  
+FOR %%a IN (%qw_maps_dir%\*.bsp) DO (
 
     IF NOT EXIST %qw_texture_dir%\%%~na (
         REM create dir
         MKDIR %qw_texture_dir%\%%~na
-      
-        REM convert bsp -> wad
-        bsp2wad -d %qw_texture_dir%\%%~na\out.wad %%a 
-      
-        CD /d %CD%\temp
-      
-        REM extract textures from wad
-        ..\qpakman -g quake1 %qw_texture_dir%\%%~na\out.wad -e  
-		
-		REM workaround for qpakman full bright textures "feature"
-		FOR %%# IN (%CD%\temp\*.*) DO (
-			SET "File=%%~nx#"
-			REN "%%#" "!File:%Pattern%=%Replace%!"
-		)
-      
-        CD /d ".."  
         
+        REM convert bsp -> wad
+        bsp2wad -d %qw_texture_dir%\%%~na\out.wad %%a
+
+        CD /d %CD%\temp
+
+        REM extract textures from wad
+        ..\qpakman -g quake1 %qw_texture_dir%\%%~na\out.wad -e
+
+        REM workaround for qpakman full bright textures "feature"
+        FOR %%# IN (%CD%\temp\*.*) DO (
+            SET "File=%%~nx#"
+            REN "%%#" "!File:%Pattern%=%Replace%!"
+        )
+
+        CD /d ".."  
+
         REM delete sky textures
         DEL "%CD%\temp\sky*.*" /F /Q
-      
+
         REM convert textures to grayscale
         i_view64.exe "%CD%\temp\*.*" /advancedbatch /gray /convert="%qw_texture_dir%\%%~na\*.png"
-      
+
         REM remove temp files
         DEL "%CD%\temp\*.*" /F /Q
-        DEL %qw_texture_dir%\%%~na\out.wad        
-    )    
+        DEL %qw_texture_dir%\%%~na\out.wad
+    )
 )
 RMDIR "%CD%\temp

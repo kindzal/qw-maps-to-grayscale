@@ -7,6 +7,7 @@ SET "Pattern1=_fbr"
 SET "Replace1="
 SET "Pattern2=star_"
 SET "Replace2=#"
+SET script_dir=%CD%
 
 
 IF "%~1"=="/h" (
@@ -32,10 +33,10 @@ IF NOT EXIST %qw_maps_dir%\ (
     EXIT 3
 )
 
-IF NOT EXIST %CD%\temp MKDIR %CD%\temp
+IF NOT EXIST %script_dir%\temp MKDIR %script_dir%\temp
 
-IF NOT EXIST %CD%\temp (
-    ECHO %CD%\temp does not exist or not readable and cannot be created
+IF NOT EXIST %script_dir%\temp (
+    ECHO %script_dir%\temp does not exist or not readable and cannot be created
     EXIT 3
 )
 
@@ -48,31 +49,35 @@ FOR %%a IN (%qw_maps_dir%\*.bsp) DO (
         REM convert bsp -> wad
         bsp2wad -d %qw_texture_dir%\%%~na\out.wad %%a
 
-        CD /d %CD%\temp
+        CD /d %script_dir%\temp
 
         REM extract textures from wad
         ..\qpakman -g quake1 %qw_texture_dir%\%%~na\out.wad -e
 
-        REM workaround for qpakman full bright textures "feature" and "*" / "_star" character in texture names
-        FOR %%a IN (%CD%\temp\*.*) DO (
-            SET "File=%%~nxa"
-            REN "%%a" "!File:%Pattern1%=%Replace1%!"
-            REN "%%a" "!File:%Pattern2%=%Replace2%!"
-        )
-
-        CD /d ".."  
-
         REM delete sky, trigger and clip textures
-        DEL "%CD%\temp\sky*.*" /F /Q
-		DEL "%CD%\temp\trigger.*" /F /Q
-		DEL "%CD%\temp\clip.*" /F /Q
+        DEL "%script_dir%\temp\sky*.*" /F /Q
+        DEL "%script_dir%\temp\trigger.*" /F /Q
+        DEL "%script_dir%\temp\clip.*" /F /Q
+
+        CD /d ..
 
         REM convert textures to grayscale
-        i_view64.exe "%CD%\temp\*.*" /advancedbatch /gray /convert="%qw_texture_dir%\%%~na\*.png"
+        i_view64.exe "%script_dir%\temp\*.*" /advancedbatch /gray /convert="%qw_texture_dir%\%%~na\*.png"
 
         REM remove temp files
-        DEL "%CD%\temp\*.*" /F /Q
+        DEL "%script_dir%\temp\*.*" /F /Q
         DEL %qw_texture_dir%\%%~na\out.wad
+
+        CD /d %qw_texture_dir%\%%~na
+
+        REM workaround for qpakman full bright textures "feature" and "*" / "_star" character in texture names
+        FOR %%b IN (%qw_texture_dir%\%%~na\*.png) DO (
+            SET "File=%%~nxb"
+            REN "%%b" "!File:%Pattern1%=%Replace1%!"
+            REN "%%b" "!File:%Pattern2%=%Replace2%!"
+        )
+        
+        CD /d %script_dir%
     )
 )
-RMDIR "%CD%\temp
+RMDIR "%script_dir%\temp

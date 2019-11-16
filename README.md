@@ -32,4 +32,5 @@ or just download it from here:
 
 ## Notes
 This script will not convert sky textures as it can't be done automatically in a reliable manner. You'll need to do it manually if wanted. <br/>
-This script will not convert the orignal DM maps / SP maps from the .pak file. Get this downloaded seperately from <a href="https://www.quakeworld.nu/forum/topic/2042/37310/greyish-textures-pack-clean-simple/" rel="nofollow">here</a> or <a href="https://gfx.quakeworld.nu/browse/textures/" rel="nofollow">here</a>.
+This script will not convert clip and trigger textures. <br/>
+This script will not convert the original DM maps / SP maps from the .pak file. Get this downloaded seperately from <a href="https://www.quakeworld.nu/forum/topic/2042/37310/greyish-textures-pack-clean-simple/" rel="nofollow">here</a> or <a href="https://gfx.quakeworld.nu/browse/textures/" rel="nofollow">here</a>.

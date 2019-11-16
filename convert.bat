@@ -3,6 +3,8 @@ setlocal enabledelayedexpansion
 
 SET qw_maps_dir=C:\games\quake\qw\maps
 SET qw_texture_dir=C:\games\quake\qw\textures
+SET "Pattern=_fbr"
+SET "Replace="
 
 IF "%~1"=="/h" (
     ECHO Example usage %0 QW_MAPS_DIR_PATH QW_TEXTURES_DIR_PATH
@@ -46,7 +48,13 @@ FOR %%a IN (%qw_maps_dir%\*.bsp) DO (
         CD /d %CD%\temp
       
         REM extract textures from wad
-        ..\qpakman %qw_texture_dir%\%%~na\out.wad -e  
+        ..\qpakman -g quake1 %qw_texture_dir%\%%~na\out.wad -e  
+		
+		REM workaround for qpakman full bright textures "feature"
+		FOR %%# IN (%CD%\temp\*.*) DO (
+			SET "File=%%~nx#"
+			REN "%%#" "!File:%Pattern%=%Replace%!"
+		)
       
         CD /d ".."  
         

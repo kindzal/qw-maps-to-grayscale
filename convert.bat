@@ -80,4 +80,4 @@ FOR %%a IN (%qw_maps_dir%\*.bsp) DO (
         CD /d %script_dir%
     )
 )
-RMDIR "%script_dir%\temp
+RMDIR %script_dir%\temp

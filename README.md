@@ -6,13 +6,13 @@ it won't find an respective map directory in the QW textures directory it will:
 - create a temp dir in the script folder
 - covert bsp to wad using qpakman
 - extract all textures from the converted wad file to a temp dir using qpakman
-- convert extracted textures to grayscale and put them in qw\textures\\{MAP} directory using i_view64.exe
+- convert extracted textures to grayscale and put them in qw\textures\\{MAP} directory using i_view64
 - remove all files in the temp dir and the temp dir itself from the current folder
 
 If you want the script to recreate all map textures in grayscale make sure to delete all map dirs from qw\textures first.
 
 ## Prerequisites
-- <a href="https://www.irfanview.com/64bit.htm" rel="nofollow">IrfanView 64-bit</a>
+- <a href="https://www.irfanview.com/64bit.htm" rel="nofollow">IrfanView 64-bit</a> - latest <a href="https://www.irfanview.info/files/iview453_x64.zip" rel="nofollow">here</a>
 - <a href="https://www.quaddicted.com/files/tools/qpakman-062b.zip" rel="nofollow">QPakMan</a>
 - <a href="https://git-scm.com/download/win" rel="nofollow">Git for Windows</a> (optional)
 

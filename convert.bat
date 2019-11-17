@@ -44,14 +44,14 @@ FOR %%a IN (%qw_maps_dir%\*.bsp) DO (
     IF NOT EXIST %qw_texture_dir%\%%~na (
         REM create dir
         MKDIR %qw_texture_dir%\%%~na
-        
-        REM convert bsp -> wad
-        bsp2wad -d %qw_texture_dir%\%%~na\out.wad %%a
 
         CD /d %script_dir%\temp
 
+        REM convert bsp -> wad
+        ..\qpakman -m %%a -o out.wad
+
         REM extract textures from wad
-        ..\qpakman -g quake1 %qw_texture_dir%\%%~na\out.wad -e
+        ..\qpakman -g quake1 out.wad -e
 
         REM delete sky, trigger and clip textures
         DEL "%script_dir%\temp\sky*.*" /F /Q
@@ -60,12 +60,14 @@ FOR %%a IN (%qw_maps_dir%\*.bsp) DO (
 
         CD /d ..
 
+        REM remove wad file
+        DEL "%script_dir%\temp\out.wad"
+
         REM convert textures to grayscale
         i_view64.exe "%script_dir%\temp\*.*" /advancedbatch /gray /convert="%qw_texture_dir%\%%~na\*.png"
 
         REM remove temp files
         DEL "%script_dir%\temp\*.*" /F /Q
-        DEL %qw_texture_dir%\%%~na\out.wad
 
         CD /d %qw_texture_dir%\%%~na
 

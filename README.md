@@ -4,8 +4,8 @@ Script to convert QuakeWorld map textures to grayscale.
 This batch script will walk over all maps in a specified QW maps directory and providing 
 it won't find an respective map directory in the QW textures directory it will:
 - create a temp dir in the script folder
-- covert bsp to wad using bsp2wad.exe
-- extract all textures from the converted wad file to a temp dir using qpakman.exe
+- covert bsp to wad using qpakman
+- extract all textures from the converted wad file to a temp dir using qpakman
 - convert extracted textures to grayscale and put them in qw\textures\\{MAP} directory using i_view64.exe
 - remove all files in the temp dir and the temp dir itself from the current folder
 
@@ -13,11 +13,10 @@ If you want the script to recreate all map textures in grayscale make sure to de
 
 ## Prerequisites
 - <a href="https://www.irfanview.com/64bit.htm" rel="nofollow">IrfanView 64-bit</a>
-- <a href="https://joshua.itch.io/quake-tools?download" rel="nofollow">BSP to WAD</a>
 - <a href="https://www.quaddicted.com/files/tools/qpakman-062b.zip" rel="nofollow">QPakMan</a>
 - <a href="https://git-scm.com/download/win" rel="nofollow">Git for Windows</a> (optional)
 
-convert.bat script will expect the following executables to be in the script directory: bsp2wad.exe, qpakman.exe, i_view64.exe.
+convert.bat script will expect the following executables to be in the script directory: qpakman.exe, i_view64.exe.
 
 ## Downloading
 To download the script, simply open cmd or PowerShell prompt: <br/><br/>
